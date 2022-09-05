@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -65,20 +63,14 @@ public class MainWindow extends JDialog {
             }
         });
 
-        spinner1.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                if(thread2 != null) {
-                    thread1.setPriority((Integer)(spinner1.getValue()));
-                }
+        spinner1.addChangeListener(e -> {
+            if(thread2 != null) {
+                thread1.setPriority((Integer)(spinner1.getValue()));
             }
         });
-        spinner2.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                if(thread2 != null) {
-                    thread2.setPriority((Integer)(spinner2.getValue()));
-                }
+        spinner2.addChangeListener(e -> {
+            if(thread2 != null) {
+                thread2.setPriority((Integer)(spinner2.getValue()));
             }
         });
 
