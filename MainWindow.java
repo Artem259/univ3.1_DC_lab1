@@ -64,7 +64,7 @@ public class MainWindow extends JDialog {
         });
 
         spinner1.addChangeListener(e -> {
-            if(thread2 != null) {
+            if(thread1 != null) {
                 thread1.setPriority((Integer)(spinner1.getValue()));
             }
         });
