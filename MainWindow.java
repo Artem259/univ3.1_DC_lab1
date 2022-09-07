@@ -9,7 +9,11 @@ public class MainWindow extends JDialog {
     private JSpinner spinner1;
     private JSpinner spinner2;
     private JSlider slider;
-    private JButton startButton;
+    private JButton startButton1;
+    private JButton startButton2;
+    private JButton stopButton1;
+    private JButton stopButton2;
+    private JProgressBar progressBar1;
 
     public MainWindow() {
         JFrame win = new JFrame();
@@ -17,10 +21,10 @@ public class MainWindow extends JDialog {
         win.setSize(500,300);
         setModal(true);
 
-        startButton.addActionListener(new ActionListener() {
+        startButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                startButton.setEnabled(false);
+                startButton1.setEnabled(false);
 
                 thread1 = new Thread(
                         () -> {

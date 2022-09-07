@@ -5,18 +5,19 @@
       <xy x="48" y="54" width="425" height="337"/>
     </constraints>
     <properties>
+      <enabled value="true"/>
       <minimumSize width="254" height="100"/>
       <preferredSize width="500" height="300"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="9fa95" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="9fa95" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints/>
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="e3588" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="e3588" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="20" right="0"/>
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -24,39 +25,6 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="99b93" class="javax.swing.JSpinner" binding="spinner1" custom-create="true" default-binding="true">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="100" height="50"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <autoscrolls value="false"/>
-                  <doubleBuffered value="false"/>
-                  <enabled value="true"/>
-                  <focusable value="false"/>
-                  <font size="18"/>
-                  <inheritsPopupMenu value="false"/>
-                </properties>
-              </component>
-              <component id="4739b" class="javax.swing.JSpinner" binding="spinner2" custom-create="true" default-binding="true">
-                <constraints>
-                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="100" height="50"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <enabled value="true"/>
-                  <focusable value="false"/>
-                  <font size="18"/>
-                  <visible value="true"/>
-                </properties>
-              </component>
-              <hspacer id="50ba1">
-                <constraints>
-                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
               <hspacer id="bf83d">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -64,9 +32,21 @@
               </hspacer>
               <hspacer id="6166c">
                 <constraints>
-                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
               </hspacer>
+              <component id="14736" class="javax.swing.JProgressBar" binding="progressBar1" default-binding="true">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="25" height="25"/>
+                    <maximum-size width="25" height="25"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <foreground color="-65536"/>
+                  <value value="100"/>
+                </properties>
+              </component>
             </children>
           </grid>
           <grid id="6ddbe" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -98,7 +78,7 @@
               </component>
             </children>
           </grid>
-          <grid id="3e621" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="3e621" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -106,7 +86,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="91b6e" class="javax.swing.JButton" binding="startButton" default-binding="true">
+              <component id="91b6e" class="javax.swing.JButton" binding="startButton1">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                     <minimum-size width="100" height="30"/>
@@ -115,7 +95,7 @@
                 <properties>
                   <font size="18"/>
                   <foreground color="-12026437"/>
-                  <text value="Start"/>
+                  <text value="Start 1"/>
                 </properties>
               </component>
               <hspacer id="6f14c">
@@ -128,6 +108,72 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
               </hspacer>
+              <hspacer id="2457c">
+                <constraints>
+                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <component id="99b33" class="javax.swing.JButton" binding="startButton2">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <minimum-size width="100" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <font size="18"/>
+                  <foreground color="-12026437"/>
+                  <text value="Start 2"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="304dc" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="d7a1" class="javax.swing.JButton" binding="stopButton1">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <minimum-size width="100" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <font size="18"/>
+                  <foreground color="-12026437"/>
+                  <text value="Stop 1"/>
+                </properties>
+              </component>
+              <hspacer id="63976">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <hspacer id="fa141">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <hspacer id="8ac81">
+                <constraints>
+                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <component id="dfba" class="javax.swing.JButton" binding="stopButton2">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <minimum-size width="100" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <font size="18"/>
+                  <foreground color="-12026437"/>
+                  <text value="Stop 2"/>
+                </properties>
+              </component>
             </children>
           </grid>
         </children>
