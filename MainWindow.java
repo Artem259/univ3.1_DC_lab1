@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class MainWindow extends JDialog {
     private Thread thread1, thread2;
-    private volatile int counter;
+    private int counter;
     private JPanel contentPane;
     private JSpinner spinner1;
     private JSpinner spinner2;
