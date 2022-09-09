@@ -1,19 +1,17 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 
 public class MainWindow extends JDialog {
     private Thread thread1, thread2;
-    private volatile int counter;
+    MySemaphore semaphore = new MySemaphore();
+    private int counter;
     private JPanel contentPane;
-    private JSpinner spinner1;
-    private JSpinner spinner2;
     private JSlider slider;
     private JButton startButton1;
     private JButton startButton2;
     private JButton stopButton1;
     private JButton stopButton2;
-    private JProgressBar progressBar1;
+    private JProgressBar progressBar;
 
     public MainWindow() {
         JFrame win = new JFrame();
@@ -21,61 +19,80 @@ public class MainWindow extends JDialog {
         win.setSize(500,300);
         setModal(true);
 
-        startButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                startButton1.setEnabled(false);
+        startButton1.addActionListener(e -> {
+            if(semaphore.isLocked())
+                return;
+            semaphore.lock();
 
-                thread1 = new Thread(
-                        () -> {
-                            while (true) {
-                                synchronized (this) {
-                                    if(counter>10)
-                                        counter--;
-                                    slider.setValue(counter);
-                                    try {
-                                        wait(5);
-                                    } catch (InterruptedException ex) {
-                                        throw new RuntimeException(ex);
-                                    }
-                                }
+            thread1 = new Thread(
+                    () -> {
+                        while (true) {
+                            if(counter>10)
+                                counter--;
+                            slider.setValue(counter);
+                            try {
+                                Thread.sleep(5);
+                            } catch (InterruptedException ex) {
+                                System.out.println("Thread1 is interrupted");
+                                break;
                             }
                         }
-                );
+                    }
+            );
+            thread1.setPriority(Thread.MIN_PRIORITY);
 
-                thread2 = new Thread(
-                        () -> {
-                            while (true) {
-                                synchronized (this) {
-                                    if(counter<90)
-                                        counter++;
-                                    slider.setValue(counter);
-                                    try {
-                                        wait(5);
-                                    } catch (InterruptedException ex) {
-                                        throw new RuntimeException(ex);
-                                    }
-                                }
+            startButton1.setEnabled(false);
+            stopButton2.setEnabled(false);
+            progressBar.setForeground(new Color(255,0,0));
+            thread1.start();
+        });
+        startButton2.addActionListener(e -> {
+            if(semaphore.isLocked())
+                return;
+            semaphore.lock();
+
+            thread2 = new Thread(
+                    () -> {
+                        while (true) {
+                            if(counter<90)
+                                counter++;
+                            slider.setValue(counter);
+                            try {
+                                Thread.sleep(5);
+                            } catch (InterruptedException ex) {
+                                System.out.println("Thread2 is interrupted");
+                                break;
                             }
                         }
-                );
+                    }
+            );
+            thread2.setPriority(Thread.MAX_PRIORITY);
 
-                thread1.start();
-                thread2.start();
-                thread1.setPriority((Integer)(spinner1.getValue()));
-                thread2.setPriority((Integer)(spinner2.getValue()));
-            }
+            startButton2.setEnabled(false);
+            stopButton1.setEnabled(false);
+            progressBar.setForeground(new Color(255,0,0));
+            thread2.start();
         });
 
-        spinner1.addChangeListener(e -> {
-            if(thread1 != null) {
-                thread1.setPriority((Integer)(spinner1.getValue()));
-            }
+        stopButton1.addActionListener(e -> {
+            if(semaphore.isFree())
+                return;
+
+            startButton1.setEnabled(true);
+            stopButton2.setEnabled(true);
+            progressBar.setForeground(new Color(0,255,0));
+            thread1.interrupt();
+            semaphore.free();
         });
-        spinner2.addChangeListener(e -> {
-            if(thread2 != null) {
-                thread2.setPriority((Integer)(spinner2.getValue()));
-            }
+        stopButton2.addActionListener(e -> {
+            if(semaphore.isFree())
+                return;
+
+            startButton2.setEnabled(true);
+            stopButton1.setEnabled(true);
+            progressBar.setForeground(new Color(0,255,0));
+            thread2.interrupt();
+            semaphore.free();
         });
 
         counter = slider.getValue();
@@ -83,11 +100,6 @@ public class MainWindow extends JDialog {
         pack();
         win.setContentPane(contentPane);
         win.setVisible(true);
-    }
-
-    private void createUIComponents() {
-        spinner1 = new JSpinner(new SpinnerNumberModel(1, 1, 10, 1));
-        spinner2 = new JSpinner(new SpinnerNumberModel(1, 1, 10, 1));
     }
 
     public static void main(String[] args) {
